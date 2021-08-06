@@ -3,7 +3,7 @@
   <div class="container">
     <div class="row">
       <nav class="navbar navbar-expand-lg narbar-light">
-        <a class="navbar-brand mr-auto" href="#">
+        <a class="navbar-brand mr-auto" routerLink="/home">
           <img src="assets/wheel-cartoon-png-2.png" height="70" width="70" alt="Site logo"/>
           Wheel Service
         </a>
@@ -13,7 +13,7 @@
         <div id="mainNav" class="collapse navbar-collapse tm-bg-white">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+              <a class="nav-link" routerLink="/home">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#tm-section-4">Portfolio</a>
@@ -26,6 +26,11 @@
             </li>
           </ul>
         </div>
+
+        <ul *ngIf="isLogged">
+          <li routerLink="/profile">{{name}}'s profile</li>
+          <li (click)="logout()">Logout</li>
+        </ul>
       </nav>
     </div>
   </div>

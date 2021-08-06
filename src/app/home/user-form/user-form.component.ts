@@ -12,6 +12,9 @@ export class UserFormComponent {
 
   user: User;
 
+  get isLogged(): boolean {
+    return this.userService.isLogged;
+  }
   constructor(
     private route: ActivatedRoute,
     private router: Router,

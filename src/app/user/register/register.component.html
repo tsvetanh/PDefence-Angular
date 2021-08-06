@@ -33,10 +33,13 @@
       </div>
       <ng-container *ngIf="form.get('tel')?.touched">
         <p *ngIf="form.get('tel')?.errors?.required" class="error">
-          Password is required!
+          Telephone is required!
         </p>
         <p *ngIf="form.get('tel')?.errors?.minlength || form.get('tel')?.errors?.maxlength" class="error">
           Telephone must be 10 numbers!
+        </p>
+        <p *ngIf="form.get('tel')?.errors?.pattern">
+          Telephone must not contain letters
         </p>
       </ng-container>
 

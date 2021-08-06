@@ -1,11 +1,28 @@
 <div class="form" id="login-form">
-  <form action="../../../index.html" method="post" class="contact-form">
+  <form #form="ngForm"  (ngSubmit)="login(form)" action="" method="post" class="contact-form">
     <div class="form-group">
-      <input #email type="email" name="contact_email" class="form-control" placeholder="Email"  required/>
+      <input #emailInput="ngModel" ngModel type="email" name="email" class="form-control" placeholder="Email"  required/>
     </div>
+<!--    <ng-container *ngIf="emailInput.touched">-->
+<!--      <p *ngIf="emailInput.errors?.required" class="error">-->
+<!--        Email is required!-->
+<!--      </p>-->
+<!--      <p *ngIf="emailInput.errors?.invalidEmail" class="error">-->
+<!--        Email is not valid!-->
+<!--      </p>-->
+<!--    </ng-container>-->
+
     <div class="form-group">
-      <input #password type="password" name="contact_subject" class="form-control" placeholder="Password"  required/>
+      <input #passwordInput="ngModel" ngModel type="password" name="password" class="form-control" placeholder="Password"  required/>
     </div>
+<!--    <ng-container *ngIf="passwordInput.touched">-->
+<!--      <p *ngIf="passwordInput.errors?.required" class="error">-->
+<!--        Password is required!-->
+<!--      </p>-->
+<!--      <p *ngIf="passwordInput.errors?.minlength" class="error">-->
+<!--        Password must be at least 4 characters!-->
+<!--      </p>-->
+<!--    </ng-container>-->
     <button type="submit" class="btn btn-primary tm-btn-primary">Login</button>
   </form>
 </div>

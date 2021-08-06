@@ -7,9 +7,7 @@ import {tap} from "rxjs/operators";
 
 const apiURL = environment.api;
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class UserService {
 
   user: User | null | undefined = undefined;
@@ -30,17 +28,34 @@ export class UserService {
   // }
 
   login(data: { email: string; password: string }) {
-    return this.http.post<User>(`${apiURL}/users/login`, data, { withCredentials: true }).pipe(
+    console.log(data);
+    return this.http.post<User>(`${apiURL}/users/login`, data, { withCredentials: false }).pipe(
       tap((user) => this.user = user)
     );
   }
 
   register(data: { name: string; email: string; tel: string; password: string }) {
-    console.log(data);
     return this.http.post<User>(`${apiURL}/users/register`, data, { withCredentials: false }).pipe(
+      tap((user) => this.user = user));
+  }
+
+  getProfileInfo() {
+    return this.http.get<User>(`${apiURL}/users/profile`, { withCredentials: true }).pipe(
+      tap((user) => this.user = user)
+    )
+  }
+
+  logout() {
+    // return this.http.post<User>(`${apiURL}/users/logout`, {}, { withCredentials: true }).pipe(
+    //   tap(() => this.user = null)
+    // );
+    this.user = null;
+  }
+
+  updateProfile(data: { username: string; email: string; tel: string; }) {
+    return this.http.put<User>(`${apiURL}/users/profile`, data, { withCredentials: true }).pipe(
       tap((user) => this.user = user)
     );
   }
-
 }
 
