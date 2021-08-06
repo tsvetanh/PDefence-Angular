@@ -1,0 +1,13 @@
+.video {
+  min-width: 100%;
+  min-height: 100%;
+  width: 700px;
+  height: 400px;
+  z-index: -100;
+}
+
+.video-container {
+  background-color: #516892;
+  border-radius: 30px;
+  padding: 20px;
+}

@@ -1,0 +1,73 @@
+<div class="form" id="register-form">
+  <form [formGroup]="form" (ngSubmit)="register()" class="contact-form">
+    <fieldset>
+      <div class="form-group">
+        <input formControlName="name" type="text" id="name" name="name" class="form-control" placeholder="Name"
+               required/>
+      </div>
+      <ng-container *ngIf="form.get('username')?.touched">
+        <p *ngIf="form.get('name')?.errors?.required" class="error">
+          Name is required!
+        </p>
+        <p *ngIf="form.get('name')?.errors?.minlength" class="error">
+          Name should be > 3
+        </p>
+      </ng-container>
+
+      <div class="form-group">
+        <input formControlName="email" type="email" id="email" name="email" class="form-control" placeholder="Email"
+               required/>
+      </div>
+      <ng-container *ngIf="form.get('email')?.touched">
+        <p *ngIf="form.get('email')?.errors?.required" class="error">
+          Email is required!
+        </p>
+        <p *ngIf="form.get('email')?.errors?.invalidEmail" class="error">
+          Email is not valid!
+        </p>
+      </ng-container>
+
+      <div class="form-group">
+        <input formControlName="tel" type="text" id="tel" name="tel" class="form-control" placeholder="Telephone"
+               required/>
+      </div>
+      <ng-container *ngIf="form.get('tel')?.touched">
+        <p *ngIf="form.get('tel')?.errors?.required" class="error">
+          Password is required!
+        </p>
+        <p *ngIf="form.get('tel')?.errors?.minlength || form.get('tel')?.errors?.maxlength" class="error">
+          Telephone must be 10 numbers!
+        </p>
+      </ng-container>
+
+      <div class="form-group">
+        <input formControlName="password" type="password" id="password" name="password" class="form-control"
+               placeholder="Password" required/>
+      </div>
+
+      <ng-container *ngIf="form.get('password')?.touched">
+        <p *ngIf="form.get('password')?.errors?.required" class="error">
+          Password is required!
+        </p>
+        <p *ngIf="form.get('password')?.errors?.minlength" class="error">
+          Password must be at least 4 characters!
+        </p>
+      </ng-container>
+
+      <div class="form-group">
+        <input formControlName="rePassword" type="password" id="rePassword" name="rePassword" class="form-control"
+               placeholder="Repeat password" required/>
+      </div>
+      <ng-container *ngIf="form.get('rePassword')?.touched">
+        <p *ngIf="form.get('rePassword')?.errors?.required" class="error">
+          Repeat Password is required!
+        </p>
+        <p *ngIf="form.get('rePassword')?.errors?.sameValue" class="error">
+          Repeat Password does not match password!
+        </p>
+      </ng-container>
+
+      <button class="btn btn-primary tm-btn-primary">Register</button>
+    </fieldset>
+  </form>
+</div>
