@@ -63,7 +63,6 @@ export class UserService {
   }
   private saveUserToStorage(user: User) {
     localStorage.setItem('USER', JSON.stringify(user));
-    console.log(localStorage);
   }
 
   private removeUserFromStorage() {
