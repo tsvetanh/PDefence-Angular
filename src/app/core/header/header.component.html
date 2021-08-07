@@ -16,20 +16,20 @@
               <a class="nav-link" routerLink="/home">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#tm-section-4">Portfolio</a>
+              <a class="nav-link" routerLink="/service">Service</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#tm-section-5">Blog Entries</a>
+              <a class="nav-link" routerLink="/about">About us</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#tm-section-6">Contact Us</a>
+              <a class="nav-link" routerLink="/contact">Contact Us</a>
             </li>
           </ul>
         </div>
 
-        <ul *ngIf="isLogged">
-          <li routerLink="/profile">{{name}}'s profile</li>
-          <li (click)="logout()">Logout</li>
+        <ul class="nav-item user" *ngIf="isLogged">
+          <li class="nav-link" routerLink="/profile">{{name}}'s profile</li>
+          <li class="nav-link" (click)="logout()">Logout</li>
         </ul>
       </nav>
     </div>

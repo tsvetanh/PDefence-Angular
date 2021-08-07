@@ -59,3 +59,16 @@
 
 .tm-top-bar.active .navbar-expand-lg .navbar-nav .nav-link { padding: 30px 35px; }
 .tm-top-bar-bg { height: 119px; }
+
+.user {
+  list-style-type: none;
+}
+
+.user > li + li {
+  padding-top: 5px;
+  border-top: 1px solid #bbb;
+}
+
+.user li :hover {
+
+}
