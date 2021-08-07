@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import {FormGroup, NgForm} from '@angular/forms';
 import {UserService} from "../service/user.service";
 
 @Component({
@@ -10,6 +10,7 @@ import {UserService} from "../service/user.service";
 export class ProfileComponent {
 
   inUpdateMode = false;
+  // form: FormGroup;
 
   get user() {
     return this.userService.user;
@@ -19,6 +20,7 @@ export class ProfileComponent {
 
   updateProfile(form: NgForm): void {
     if (form.invalid) { return; }
+    console.log(form.value);
     this.userService.updateProfile(form.value).subscribe({
       next: () => {
         this.inUpdateMode = false;

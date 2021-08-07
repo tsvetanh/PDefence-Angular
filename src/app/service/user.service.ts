@@ -58,7 +58,10 @@ export class UserService {
 
   updateProfile(data: { username: string; email: string; tel: string; }) {
     return this.http.put<User>(`${apiURL}/users/profile`, data, {withCredentials: true}).pipe(
-      tap((user) => this.user = user)
+      tap((user) => {
+        this.user = user;
+        this.saveUserToStorage(this.user);
+      })
     );
   }
   private saveUserToStorage(user: User) {

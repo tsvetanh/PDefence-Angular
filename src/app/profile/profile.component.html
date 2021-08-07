@@ -4,12 +4,12 @@
     <ng-container *ngIf="inUpdateMode">
       <form #form="ngForm" (ngSubmit)="updateProfile(form)">
         <div class="flex">
-          <p>Username: </p>
-          <input type="text" name="username" id="username" [ngModel]="user!.name">
+          <p>Name: </p>
+          <input type="text" name="name" id="name" [(ngModel)]="user!.name">
         </div>
         <div class="flex">
           <p>Email: </p>
-          <input type="email" name="email" id="email" [ngModel]="user!.email">
+          <input type="email" name="email" id="email"[(ngModel)]="user!.email" readonly>
         </div>
         <div class="flex">
           <p>Phone: </p>
@@ -21,9 +21,9 @@
         <button class="green-button">Save</button>
       </form>
     </ng-container>
-    <ng-container>
+    <ng-container *ngIf="!inUpdateMode">
       <div class="flex">
-        <p>Username: </p>
+        <p>Name: </p>
         <p>{{user!.name}}</p>
       </div>
       <div class="flex">
@@ -34,7 +34,7 @@
         <p>Phone: </p>
         <p>{{user!.tel}}</p>
       </div>
-      <button (click)="inUpdateMode = true" class="edit-button">Edit</button>
+      <button (click)="inUpdateMode = true" class="edit-button green-button">Edit</button>
     </ng-container>
   </div>
 </div>
