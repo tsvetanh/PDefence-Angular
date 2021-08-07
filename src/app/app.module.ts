@@ -12,6 +12,8 @@ import {HomeComponent} from "./home/home.component";
 import {HomeModule} from "./home/home.module";
 import {UserModule} from "./user/user.module";
 import { NotFoundComponent } from './not-found/not-found.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {LoginComponent} from "./user/login/login.component";
 
 @NgModule({
   declarations: [
@@ -27,10 +29,12 @@ import { NotFoundComponent } from './not-found/not-found.component';
     ReactiveFormsModule,
     CoreModule,
     UserModule,
-    HomeModule
+    HomeModule,
+    BrowserAnimationsModule
   ],
-  providers: [UserService],
-  exports: [],
+  providers: [],
+  exports: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
