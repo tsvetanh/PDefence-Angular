@@ -3,7 +3,11 @@
   <div class="container">
     <div class="row">
       <nav class="navbar navbar-expand-lg narbar-light">
-        <a class="navbar-brand mr-auto" routerLink="/home">
+        <a *ngIf="!isLogged" class="navbar-brand mr-auto" routerLink="/home">
+          <img src="assets/wheel-cartoon-png-2.png" height="70" width="70" alt="Site logo"/>
+          Wheel Service
+        </a>
+        <a *ngIf="isLogged" class="navbar-brand mr-auto" routerLink="/profile">
           <img src="assets/wheel-cartoon-png-2.png" height="70" width="70" alt="Site logo"/>
           Wheel Service
         </a>
@@ -12,10 +16,14 @@
         </button>
         <div id="mainNav" class="collapse navbar-collapse tm-bg-white">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
+
+            <li *ngIf="!isLogged" class="nav-item">
               <a class="nav-link" routerLink="/home">Home <span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item">
+            <li *ngIf="isLogged" class="nav-item">
+              <a class="nav-link" routerLink="/profile">Profile</a>
+            </li>
+            <li *ngIf="isLogged" class="nav-item">
               <a class="nav-link" routerLink="/service">Service</a>
             </li>
             <li class="nav-item">
@@ -24,13 +32,12 @@
             <li class="nav-item">
               <a class="nav-link" routerLink="/contact">Contact Us</a>
             </li>
+            <li *ngIf="isLogged" class="nav-item">
+              <a class="nav-link" (click)="logout()">Logout</a>
+            </li>
           </ul>
         </div>
 
-        <ul class="nav-item user" *ngIf="isLogged">
-          <li class="nav-link" routerLink="/profile">{{name}}'s profile</li>
-          <li class="nav-link" (click)="logout()">Logout</li>
-        </ul>
       </nav>
     </div>
   </div>

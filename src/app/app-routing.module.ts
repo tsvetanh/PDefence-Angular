@@ -5,6 +5,9 @@ import {UserFormComponent} from "./home/user-form/user-form.component";
 import {HomeComponent} from "./home/home.component";
 import {NotFoundComponent} from "./not-found/not-found.component";
 import {ProfileComponent} from "./profile/profile.component";
+import {AboutUsComponent} from "./about-us/about-us.component";
+import {ServiceComponent} from "./service/service.component";
+import {ContactUsComponent} from "./contact-us/contact-us.component";
 
 const routes: Routes = [
   {
@@ -23,6 +26,18 @@ const routes: Routes = [
   {
     path: 'users',
     component: UserListComponent
+  },
+  {
+    path: 'about',
+    component: AboutUsComponent
+  },
+  {
+    path: 'service',
+    component: ServiceComponent
+  },
+  {
+    path: 'contact',
+    component: ContactUsComponent
   },
   {
     path: '**',

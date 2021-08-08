@@ -1,6 +1,6 @@
 import {Component, OnDestroy} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
-import {UserService} from "../../service/user.service";
+import {UserService} from "../user.service";
 import {FormBuilder, FormGroup, NgForm, Validators} from "@angular/forms";
 import {emailValidator, sameValueAsFactory} from 'src/app/shared/validators';
 import {Subject} from "rxjs";
@@ -32,7 +32,7 @@ export class LoginComponent implements OnDestroy{
     const { email, password } = this.form.value;
     this.userService.login({ email, password }).subscribe({
       next: () => {
-        const redirectUrl = this.activatedRoute.snapshot.queryParams.redirectUrl || '/';
+        const redirectUrl = this.activatedRoute.snapshot.queryParams.redirectUrl || '/profile';
         this.router.navigate([redirectUrl]);
       },
       error: (err) => {

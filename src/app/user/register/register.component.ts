@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Subject} from "rxjs";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {UserService} from "../../service/user.service";
+import {UserService} from "../user.service";
 import {Router} from "@angular/router";
 import {emailValidator, sameValueAsFactory} from "../../shared/validators";
 
@@ -36,7 +36,7 @@ export class RegisterComponent implements OnDestroy {
     if (this.form.invalid) { return; }
     this.userService.register(this.form.value).subscribe({
       next: () => {
-        this.router.navigate(['/users']);
+        this.router.navigate(['/profile']);
       },
       error: (err) => {
         console.error(err);

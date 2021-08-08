@@ -1,6 +1,6 @@
 .mainbox {
   margin: auto;
-  height: 550px;
+  height: 78.2%;
   width: 550px;
   position: relative;
 }
@@ -10,8 +10,8 @@
   font-family: 'Nunito Sans', sans-serif;
   font-size: 11rem;
   position:absolute;
-  left: 20%;
-  top: 8%;
+  left: 25%;
+  top: 20%;
 }
 
 .far {

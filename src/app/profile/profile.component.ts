@@ -1,13 +1,14 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormGroup, NgForm} from '@angular/forms';
-import {UserService} from "../service/user.service";
+import {UserService} from "../user/user.service";
+import {Router} from "@angular/router";
 
 @Component({
-  selector: 'softuni-profile',
+  selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
-export class ProfileComponent {
+export class ProfileComponent implements OnInit {
 
   inUpdateMode = false;
   // form: FormGroup;
@@ -16,7 +17,8 @@ export class ProfileComponent {
     return this.userService.user;
   }
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService,
+              private router: Router) { }
 
   updateProfile(form: NgForm): void {
     if (form.invalid) { return; }
@@ -29,6 +31,12 @@ export class ProfileComponent {
         console.error(err);
       }
     })
+  }
+
+  ngOnInit(): void {
+    if (!this.userService.isLogged) {
+      this.router.navigate(['/']);
+    }
   }
 
 }

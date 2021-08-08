@@ -1,40 +1,45 @@
-<div class="container">
-  <div class="profile"><img src="/assets/profile.png" alt="default user">
-    <h3>User Info:</h3>
-    <ng-container *ngIf="inUpdateMode">
-      <form #form="ngForm" (ngSubmit)="updateProfile(form)">
-        <div class="flex">
-          <p>Name: </p>
-          <input type="text" name="name" id="name" [(ngModel)]="user!.name">
-        </div>
-        <div class="flex">
-          <p>Email: </p>
-          <input type="email" name="email" id="email"[(ngModel)]="user!.email" readonly>
-        </div>
-        <div class="flex">
-          <p>Phone: </p>
-          <div>
-            <input type="text" name="tel" id="tel" [ngModel]="user!.tel">
+<div class="home tm-section tm-section-pad tm-bg-img tm-position-relative">
+  <div class="container ie-h-align-center-fix">
+    <div class="container">
+      <div class="profile"><img src="/assets/profile.png" alt="default user">
+        <h3>User Info:</h3>
+        <ng-container *ngIf="inUpdateMode">
+          <form #form="ngForm" (ngSubmit)="updateProfile(form)">
+            <div class="flex">
+              <p>Name: </p>
+              <input type="text" name="name" id="name" [(ngModel)]="user!.name">
+            </div>
+            <div class="flex">
+              <p>Email: </p>
+              <input type="email" name="email" id="email" [(ngModel)]="user!.email" readonly>
+            </div>
+            <div class="flex">
+              <p>Phone: </p>
+              <div>
+                <input type="text" name="tel" id="tel" [ngModel]="user!.tel">
+              </div>
+            </div>
+            <button type="button" class="red-button" (click)="inUpdateMode = false">Cancel</button>
+            <button class="green-button">Save</button>
+          </form>
+        </ng-container>
+        <ng-container *ngIf="!inUpdateMode">
+          <div class="flex">
+            <p>Name: </p>
+            <p>{{user!.name}}</p>
           </div>
-        </div>
-        <button type="button" class="red-button" (click)="inUpdateMode = false">Cancel</button>
-        <button class="green-button">Save</button>
-      </form>
-    </ng-container>
-    <ng-container *ngIf="!inUpdateMode">
-      <div class="flex">
-        <p>Name: </p>
-        <p>{{user!.name}}</p>
+          <div class="flex">
+            <p>Email: </p>
+            <p>{{user!.email}}</p>
+          </div>
+          <div class="flex">
+            <p>Phone: </p>
+            <p>{{user!.tel}}</p>
+          </div>
+          <button (click)="inUpdateMode = true" class="edit-button green-button">Edit</button>
+        </ng-container>
       </div>
-      <div class="flex">
-        <p>Email: </p>
-        <p>{{user!.email}}</p>
-      </div>
-      <div class="flex">
-        <p>Phone: </p>
-        <p>{{user!.tel}}</p>
-      </div>
-      <button (click)="inUpdateMode = true" class="edit-button green-button">Edit</button>
-    </ng-container>
+    </div>
   </div>
 </div>
+<app-about-us-list></app-about-us-list>
