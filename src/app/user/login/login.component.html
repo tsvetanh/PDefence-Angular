@@ -3,33 +3,33 @@
 
     <div class="form-group">
       <input formControlName="email" type="email" name="email"
-             class="form-control" placeholder="Email" required/>
+             class="form-control" placeholder="Имейл" required/>
     </div>
 
     <ng-container *ngIf="form.get('email')?.touched">
       <p *ngIf="form.get('email')?.errors?.required" class="error">
-        Email is required!
+        Имейлът е задължителен!
       </p>
       <p *ngIf="form.get('email')?.errors?.invalidEmail" class="error">
-        Email is not valid!
+        Имейлът е невалиден!
       </p>
     </ng-container>
 
     <div class="form-group">
       <input formControlName="password" type="password" name="password" class="form-control"
-             placeholder="Password" required/>
+             placeholder="Парола" required/>
     </div>
 
     <ng-container *ngIf="form.get('password')?.touched">
       <p *ngIf="form.get('password')?.errors?.required" class="error">
-        Password is required!
+        Паролата е задължителна!
       </p>
       <p *ngIf="form.get('password')?.errors?.minlength" class="error">
-        Password must be at least 4 characters!
+        Паролата трябва да е поне осем знака!
       </p>
     </ng-container>
 
-    <button type="submit" class="btn btn-primary tm-btn-primary">Login</button>
+    <button type="submit" class="btn btn-primary tm-btn-primary">Влез</button>
 
   </form>
 </div>

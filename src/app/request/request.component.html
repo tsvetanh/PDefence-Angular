@@ -1,0 +1,66 @@
+<div class="service tm-section tm-bg-img">
+  <div class="tm-bg-white ie-container-width-fix-2">
+    <div class="container ie-h-align-center-fix">
+      <div class="row">
+        <div class="col-xs-12 ml-auto mr-auto ie-container-width-fix">
+          <form [formGroup]="form" (ngSubmit)="save()" action="index.html" method="post" class="tm-search-form tm-section-pad-2">
+            <div class="form-row tm-search-form-row flex request-form">
+              <div class="form-group tm-form-element tm-form-element-2 type">
+                <label for="type">Тип услуга</label>
+                <select formControlName="type" name="type" class="form-control tm-select" id="type" required>
+                  <option value="Смяна на гуми">Смяна на гуми</option>
+                  <option value="Реглаж на гуми">Реглаж на гуми</option>
+                  <option value="Хотел за гуми">Хотел за гуми</option>
+                </select>
+                <ng-container  *ngIf="form.get('type')?.touched">
+                  <p *ngIf="form.get('type')?.errors?.required" class="error">
+                    Трябва да изберете услуга
+                  </p>
+                </ng-container>
+              </div>
+              <div class="flex form-group tm-form-element tm-form-element-2 date">
+                <label for="date">Дата</label>
+                <input #date  formControlName="date" class="form-control" type="date"  id="date" name="date" required>
+              <ng-container *ngIf="form.get('date')?.touched">
+                <p *ngIf="form.get('date')?.errors?.required" class="error">
+                  Трябва да изберете дата
+                </p>
+              </ng-container>
+              </div>
+              <div class="flex form-group tm-form-element tm-form-element-2 hour">
+                <label for="hour">Час</label>
+                <select (click)="getByDate(date)" formControlName="hour" class="form-control" id="hour" name="hour" required>
+                  <option *ngFor="let hour of freeHours" [value]="hour">{{hour}}</option>
+                </select>
+              <ng-container *ngIf="form.get('hour')?.touched">
+                <p *ngIf="form.get('hour')?.errors?.required" class="error">
+                  Трябва да изберете час
+                </p>
+              </ng-container>
+              </div>
+<!--              <div class="form-group tm-form-element tm-form-element-2">-->
+<!--                <select name="room" class="form-control tm-select" id="room">-->
+<!--                  <option value="">Room</option>-->
+<!--                  <option value="1">1</option>-->
+<!--                  <option value="2">2</option>-->
+<!--                  <option value="3">3</option>-->
+<!--                  <option value="4">4</option>-->
+<!--                  <option value="5">5</option>-->
+<!--                  <option value="6">6</option>-->
+<!--                  <option value="7">7</option>-->
+<!--                  <option value="8">8</option>-->
+<!--                  <option value="9">9</option>-->
+<!--                  <option value="10">10</option>-->
+<!--                </select>-->
+<!--                <i class="fa fa-2x fa-bed tm-form-element-icon"></i>-->
+<!--              </div>-->
+            </div>
+              <div class="form-group tm-form-element tm-form-element-2">
+                <button type="submit" class="submit btn btn-primary tm-btn-search">Изпрати заявка</button>
+              </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

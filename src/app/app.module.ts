@@ -16,7 +16,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {LoginComponent} from "./user/login/login.component";
 import { ProfileComponent } from './profile/profile.component';
 import { AboutUsComponent } from './about-us/about-us.component';
-import { ServiceComponent } from './service/service.component';
+import { RequestComponent } from './request/request.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 
 @NgModule({
@@ -26,7 +26,7 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
     NotFoundComponent,
     ProfileComponent,
     AboutUsComponent,
-    ServiceComponent,
+    RequestComponent,
     ContactUsComponent
   ],
   imports: [

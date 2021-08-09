@@ -1,0 +1,41 @@
+.service {
+  background-color: #2D3B55;
+  height: 78.2%;
+}
+
+
+option {
+  margin: 0;
+  padding: 1rem 0;
+  border-bottom: 1px solid #ccc;
+}
+
+option:first-child {
+  padding-top: 0;
+}
+
+option:last-child {
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.error {
+  color:black;
+}
+
+.type, .date, .hour {
+  max-height: 50px;
+}
+
+.hour select, .date input {
+  min-height: 50px;
+}
+
+.submit {
+  margin-left: 157%;
+  margin-top: 20%;
+}
+
+.request-form {
+  justify-content: center;
+}

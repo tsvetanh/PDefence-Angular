@@ -6,37 +6,37 @@
         <ng-container *ngIf="inUpdateMode">
           <form #form="ngForm" (ngSubmit)="updateProfile(form)">
             <div class="flex">
-              <p>Name: </p>
+              <p>Име: </p>
               <input type="text" name="name" id="name" [(ngModel)]="user!.name">
             </div>
             <div class="flex">
-              <p>Email: </p>
+              <p>Имейл: </p>
               <input type="email" name="email" id="email" [(ngModel)]="user!.email" readonly>
             </div>
             <div class="flex">
-              <p>Phone: </p>
+              <p>Телефон: </p>
               <div>
                 <input type="text" name="tel" id="tel" [ngModel]="user!.tel">
               </div>
             </div>
-            <button type="button" class="red-button" (click)="inUpdateMode = false">Cancel</button>
-            <button class="green-button">Save</button>
+            <button type="button" class="red-button" (click)="inUpdateMode = false">Откажи</button>
+            <button class="green-button">Запази</button>
           </form>
         </ng-container>
         <ng-container *ngIf="!inUpdateMode">
           <div class="flex">
-            <p>Name: </p>
+            <p>Име: </p>
             <p>{{user!.name}}</p>
           </div>
           <div class="flex">
-            <p>Email: </p>
+            <p>Имейл: </p>
             <p>{{user!.email}}</p>
           </div>
           <div class="flex">
-            <p>Phone: </p>
+            <p>Телефон: </p>
             <p>{{user!.tel}}</p>
           </div>
-          <button (click)="inUpdateMode = true" class="edit-button green-button">Edit</button>
+          <button (click)="inUpdateMode = true" class="edit-button green-button">Редактирай</button>
         </ng-container>
       </div>
     </div>

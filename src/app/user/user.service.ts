@@ -4,7 +4,6 @@ import {Observable} from "rxjs";
 import {User} from "../model/user";
 import {environment} from "../../environments/environment";
 import {tap} from "rxjs/operators";
-import {LocalStorage} from "../core/injection-tokens";
 
 const apiURL = environment.api;
 
@@ -27,7 +26,6 @@ export class UserService {
   public login(data: { email: string; password: string }) {
     return this.http.post<User>(`${apiURL}/users/login`, data, {withCredentials: true}).pipe(
       tap((user) => {
-        this.user = user;
         this.saveUserToStorage(user);
       })
     );
@@ -36,7 +34,6 @@ export class UserService {
   public register(data: { name: string; email: string; tel: string; password: string }) {
     return this.http.post<User>(`${apiURL}/users/register`, data, {withCredentials: false}).pipe(
       tap((user) => {
-        this.user = user
         this.saveUserToStorage(user);
       }));
   }
@@ -59,12 +56,14 @@ export class UserService {
   updateProfile(data: { username: string; email: string; tel: string; }) {
     return this.http.put<User>(`${apiURL}/users/profile`, data, {withCredentials: true}).pipe(
       tap((user) => {
-        this.user = user;
-        this.saveUserToStorage(this.user);
+        this.saveUserToStorage(user);
       })
     );
   }
   private saveUserToStorage(user: User) {
+    // @ts-ignore
+    user.password = undefined;
+    this.user = user;
     localStorage.setItem('USER', JSON.stringify(user));
   }
 

@@ -11,7 +11,6 @@ import {Subject} from "rxjs";
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnDestroy{
-  emailValidator = emailValidator;
   killSubscription = new Subject();
   form: FormGroup;
 
@@ -23,7 +22,7 @@ export class LoginComponent implements OnDestroy{
   ) {
     this.form = this.fb.group({
       email: ['', [Validators.required, emailValidator]],
-      password: ['', [Validators.required, Validators.minLength(4)]]
+      password: ['', [Validators.required, Validators.minLength(8)]]
     });
   }
 
@@ -32,7 +31,7 @@ export class LoginComponent implements OnDestroy{
     const { email, password } = this.form.value;
     this.userService.login({ email, password }).subscribe({
       next: () => {
-        const redirectUrl = this.activatedRoute.snapshot.queryParams.redirectUrl || '/profile';
+        const redirectUrl = this.activatedRoute.snapshot.queryParams.redirectUrl || '/service';
         this.router.navigate([redirectUrl]);
       },
       error: (err) => {
