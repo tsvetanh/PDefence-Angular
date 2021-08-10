@@ -503,7 +503,11 @@ select.tm-select::-ms-expand { display: none; }
 }
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 
 p.error {
   text-align: left;
@@ -511,3 +515,4 @@ p.error {
   border-bottom: 2px solid red;
   padding-top: 0;
 }
+

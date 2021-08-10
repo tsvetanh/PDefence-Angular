@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import {UserService} from "../user/user.service";
 
 @Component({
   selector: 'app-contact-us',
@@ -7,9 +9,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContactUsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private userService: UserService,
+              private router: Router) { }
+
+  get isLogged(): boolean {
+    return this.userService.isLogged;
+  }
 
   ngOnInit(): void {
   }
 
+  getName(): string {
+    // @ts-ignore
+    return this.userService.user.name
+  }
+
+  getEmail(): string {
+    // @ts-ignore
+    return this.userService.user.email
+  }
+
+  send() {
+    this.router.navigate(['/']);
+  }
 }
