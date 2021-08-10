@@ -18,6 +18,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { RequestComponent } from './request/request.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
+import { RequestListComponent } from './request-list/request-list.component';
+import { MyRequestsComponent } from './my-requests/my-requests.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
     ProfileComponent,
     AboutUsComponent,
     RequestComponent,
-    ContactUsComponent
+    ContactUsComponent,
+    RequestListComponent,
+    MyRequestsComponent
   ],
   imports: [
     BrowserModule,

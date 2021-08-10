@@ -1,13 +1,12 @@
 import {Injectable} from '@angular/core';
 import {Request} from "../model/request";
-import {User} from "../model/user";
-import {tap} from "rxjs/operators";
 import {environment} from "../../environments/environment";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
+import {User} from "../model/user";
 
 
-const apiURL = environment.api;
+const apiURL = environment.api+"/request";
 
 @Injectable({
   providedIn: 'root'
@@ -18,10 +17,19 @@ export class RequestService {
   }
 
   public save(data: { type: string, date: Date, hour: number}, email: string) {
-    return this.http.post<Request>(`${apiURL}/request/save`, {data, email}, {withCredentials: true});
+    return this.http.post<Request>(`${apiURL}/save`, {data, email}, {withCredentials: true});
   }
 
-  getRequestByDate(date: string): Observable<Request[]> {
-    return this.http.post<Request[]>(`${apiURL}/request/getByDate`, {date}, {withCredentials: true});
+  getRequestsByDate(date: string): Observable<Request[]> {
+    return this.http.post<Request[]>(`${apiURL}/getByDate`, {date}, {withCredentials: true});
   }
+
+  getRequestsByEmail(email: string | undefined): Observable<Request[]> {
+    return this.http.post<Request[]>(`${apiURL}/getByEmail`, email, {withCredentials: true});
+  }
+
+  public getAllRequests(): Observable<Request[]> {
+    return this.http.get<Request[]>(apiURL + "/all");
+  }
+
 }

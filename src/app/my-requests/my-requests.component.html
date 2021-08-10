@@ -1,0 +1,22 @@
+<div class="card my-5">
+  <div class="card-body">
+    <table class="table table-bordered table-striped">
+      <thead class="thead-dark">
+      <h1>Моите заявки</h1>
+      <tr>
+        <th scope="col">Услуга</th>
+        <th scope="col">Дата</th>
+        <th scope="col">Час</th>
+      </tr>
+      </thead>
+      <tbody *ngIf="requests">
+      <tr *ngFor="let request of requests">
+        <td>{{ request.type }}</td>
+        <td>{{ request.date?.toString()?.substr(0, 10) }}</td>
+        <td>{{ request.hour }}</td>
+      </tr>
+      </tbody>
+      <p *ngIf="!requests">Loading...</p>
+    </table>
+  </div>
+</div>

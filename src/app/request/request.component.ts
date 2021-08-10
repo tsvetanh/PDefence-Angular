@@ -52,7 +52,7 @@ export class RequestComponent implements OnInit, OnDestroy {
 
   getByDate(date: HTMLInputElement): void {
     if (date.value) {
-      this.requestService.getRequestByDate(date.value).subscribe(data => {
+      this.requestService.getRequestsByDate(date.value).subscribe(data => {
         this.freeHours = [9, 10, 11, 12, 13, 14, 15, 16];
         for (const request of data) {
           let index = this.freeHours.indexOf(<number>request.hour);
