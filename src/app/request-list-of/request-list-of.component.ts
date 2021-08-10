@@ -33,7 +33,6 @@ export class RequestListOfComponent implements OnInit {
     this.requestService.getRequestsByEmail(this.email).subscribe(data => {
       // @ts-ignore
       this.requests = data;
-      console.log(this.requests);
     });
   }
 

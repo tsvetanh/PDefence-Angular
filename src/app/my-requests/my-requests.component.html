@@ -7,6 +7,7 @@
         <th scope="col">Услуга</th>
         <th scope="col">Дата</th>
         <th scope="col">Час</th>
+        <th scope="col">Статус</th>
       </tr>
       </thead>
       <tbody *ngIf="requests">
@@ -14,6 +15,7 @@
         <td>{{ request.type }}</td>
         <td>{{ request.date?.toString()?.substr(0, 10) }}</td>
         <td>{{ request.hour }}</td>
+        <td>{{ request.status }} <button (click)="cancel(request.id)" class="btn btn-primary float-right">Откажи</button></td>
       </tr>
       </tbody>
       <p *ngIf="!requests">Loading...</p>

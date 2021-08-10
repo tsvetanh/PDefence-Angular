@@ -24,6 +24,10 @@ export class RequestService {
     return this.http.post<Request[]>(`${apiURL}/getByDate`, {date}, {withCredentials: true});
   }
 
+  getRequestsById(id: string): Observable<Request[]> {
+    return this.http.post<Request[]>(`${apiURL}/getById`, {id}, {withCredentials: true});
+  }
+
   getRequestsByEmail(email: string | null | undefined): Observable<Request[]> {
     return this.http.post<Request[]>(`${apiURL}/getByEmail`, email, {withCredentials: true});
   }
@@ -32,4 +36,8 @@ export class RequestService {
     return this.http.get<Request[]>(apiURL + "/all");
   }
 
+   public cancelRequest(id: string): Observable<Request> {
+    console.log(id)
+    return this.http.post<Request>(`${apiURL}/cancel`, id, {withCredentials: true});
+  }
 }
