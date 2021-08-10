@@ -24,7 +24,7 @@ export class RequestService {
     return this.http.post<Request[]>(`${apiURL}/getByDate`, {date}, {withCredentials: true});
   }
 
-  getRequestsByEmail(email: string | undefined): Observable<Request[]> {
+  getRequestsByEmail(email: string | null | undefined): Observable<Request[]> {
     return this.http.post<Request[]>(`${apiURL}/getByEmail`, email, {withCredentials: true});
   }
 

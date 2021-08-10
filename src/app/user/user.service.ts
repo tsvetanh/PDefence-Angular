@@ -67,6 +67,10 @@ export class UserService {
       })
     );
   }
+
+  editProfile(data: { username: string; email: string; tel: string; }) {
+    return this.http.put<User>(`${apiURL}/users/profile`, data, {withCredentials: true});
+  }
   private saveUserToStorage(user: User) {
     // @ts-ignore
     user.password = undefined;

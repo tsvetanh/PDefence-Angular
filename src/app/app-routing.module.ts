@@ -10,6 +10,7 @@ import {ContactUsComponent} from "./contact-us/contact-us.component";
 import {RequestListComponent} from "./request-list/request-list.component";
 import {MyRequestsComponent} from "./my-requests/my-requests.component";
 import { UserDetailsComponent } from './user-details/user-details.component';
+import {RequestListOfComponent} from "./request-list-of/request-list-of.component";
 
 const routes: Routes = [
   {
@@ -44,6 +45,10 @@ const routes: Routes = [
   {
     path: "myRequests",
     component: MyRequestsComponent
+  },
+  {
+    path: "requestsOf",
+    component: RequestListOfComponent
   },
   {
     path: 'allUsers',

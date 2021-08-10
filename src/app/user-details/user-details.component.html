@@ -37,6 +37,7 @@
             <p>{{user!.tel}}</p>
           </div>
           <button (click)="inUpdateMode = true" class="edit-button green-button">Редактирай</button>
+          <a routerLink="/requestsOf" [queryParams]="{email: user!.email}" class="edit-button tm-bg-dark-blue">Виж заявки</a>
         </ng-container>
       </div>
     </div>

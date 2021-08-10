@@ -27,7 +27,7 @@ export class UserDetailsComponent implements OnInit {
       return;
     }
     console.log(form.value);
-    this.userService.updateProfile(form.value).subscribe({
+    this.userService.editProfile(form.value).subscribe({
       next: () => {
         this.inUpdateMode = false;
       },
