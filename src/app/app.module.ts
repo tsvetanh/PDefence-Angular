@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {UserService} from "./user/user.service";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 import {HttpClientModule} from "@angular/common/http";
@@ -13,13 +12,14 @@ import {HomeModule} from "./home/home.module";
 import {UserModule} from "./user/user.module";
 import { NotFoundComponent } from './not-found/not-found.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {LoginComponent} from "./user/login/login.component";
 import { ProfileComponent } from './profile/profile.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { RequestComponent } from './request/request.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { RequestListComponent } from './request-list/request-list.component';
 import { MyRequestsComponent } from './my-requests/my-requests.component';
+import {UserListComponent} from "./user-list/user-list.component";
+import { UserDetailsComponent } from './user-details/user-details.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +31,9 @@ import { MyRequestsComponent } from './my-requests/my-requests.component';
     RequestComponent,
     ContactUsComponent,
     RequestListComponent,
-    MyRequestsComponent
+    MyRequestsComponent,
+    UserListComponent,
+    UserDetailsComponent
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {UserService} from "../user/user.service";
 import {User} from "../model/user";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-user-list',
@@ -11,13 +12,17 @@ export class UserListComponent implements OnInit {
 
   users: User[] | undefined;
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService,
+              private router: Router) {
   }
 
   ngOnInit() {
     this.userService.getAllUsers().subscribe(data => {
       this.users = data;
     });
+    if (!this.userService.isLogged || !this.userService.admin) {
+      this.router.navigate(['/']);
+    }
   }
 
 }

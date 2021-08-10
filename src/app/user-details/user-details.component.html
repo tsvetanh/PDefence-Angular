@@ -2,7 +2,7 @@
   <div class="container ie-h-align-center-fix">
     <div class="container">
       <div class="profile"><img src="/assets/profile.png" alt="default user">
-        <h3>Информация за акаунта</h3>
+        <h3>Информация за портебителя</h3>
         <ng-container *ngIf="inUpdateMode">
           <form #form="ngForm" (ngSubmit)="updateProfile(form)">
             <div class="flex">
@@ -16,7 +16,7 @@
             <div class="flex">
               <p>Телефон: </p>
               <div>
-                <input type="text" name="tel" id="tel" [ngModel]="user!.tel">
+                <input type="text" name="tel" id="tel" [(ngModel)]="user!.tel">
               </div>
             </div>
             <button type="button" class="red-button" (click)="inUpdateMode = false">Откажи</button>

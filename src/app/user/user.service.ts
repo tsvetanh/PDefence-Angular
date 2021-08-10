@@ -4,6 +4,7 @@ import {Observable} from "rxjs";
 import {User} from "../model/user";
 import {environment} from "../../environments/environment";
 import {tap} from "rxjs/operators";
+import {Params} from "@angular/router";
 
 const apiURL = environment.api;
 
@@ -13,6 +14,10 @@ export class UserService {
 
   get isLogged(): boolean {
     return !!this.user;
+  }
+
+  get admin(): boolean {
+    return this.user?.roles?.indexOf("ADMIN") === 1;
   }
 
   constructor(private http: HttpClient) {
@@ -38,7 +43,9 @@ export class UserService {
       }));
   }
 
-
+  getUserByEmail(email: string | null | undefined): Observable<User> {
+    return this.http.post<User>(`${apiURL}/users/get`, email, {withCredentials: true});
+  }
 
   logout() {
     // return this.http.post<User>(`${apiURL}/users/logout`, {}, { withCredentials: true }).pipe(
@@ -71,7 +78,6 @@ export class UserService {
     this.user = null;
     localStorage.removeItem("USER")
   }
-
 
 }
 

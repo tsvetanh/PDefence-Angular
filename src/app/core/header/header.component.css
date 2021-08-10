@@ -48,12 +48,11 @@
   padding: 0;
   z-index: 10000;
   transition: all 0.2s ease-in-out;
-  height: 119px;
   background: white;
 }
 
 .tm-top-bar.active {
-  height: 79px;
+  /*height: 79px;*/
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
 }
 
@@ -71,4 +70,45 @@
 
 .user li :hover {
 
+}
+
+/*-------------------------------*/
+a, .dropdown {
+  display: inline-block;
+  /*width: 100px;*/
+  /*padding: 10px;*/
+}
+
+.dropdown {
+  /*max-height: 50px;*/
+}
+
+.dropdown .dropbutton {
+  border: none;
+  outline: none;
+  color: inherit;
+  background-color: inherit;
+  /*font-size: inherit;*/
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: whitesmoke;
+  color: black;
+  width: auto;
+}
+
+.dropdown-content a {
+  float: none;
+  padding: 10px;
+  display: block;
+  text-align: center;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+  position: absolute;
+  width: auto;
+  text-align: center;
 }

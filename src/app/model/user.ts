@@ -3,6 +3,7 @@ export class User {
   name: string | undefined;
   tel: string | undefined;
   password: string | undefined;
+  roles: string[] | undefined;
 
 
   constructor() {

@@ -19,6 +19,9 @@ export class HeaderComponent {
   get name(): string {
     return this.userService.user?.name || '';
   }
+  get admin(): boolean {
+    return this.userService.admin;
+  }
   logout(): void {
     this.userService.logout()
     //   .subscribe(() => {
@@ -26,4 +29,6 @@ export class HeaderComponent {
     // });
     this.router.navigate(['/home'])
   }
+
+
 }
