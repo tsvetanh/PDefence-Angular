@@ -41,7 +41,7 @@ export class RequestComponent implements OnInit, OnDestroy {
     this.requestService.save({ type, date, hour}, email)
       .subscribe({
       next: () => {
-        const redirectUrl = this.activatedRoute.snapshot.queryParams.redirectUrl || '/profile';
+        const redirectUrl = this.activatedRoute.snapshot.queryParams.redirectUrl || '/myRequests';
         this.router.navigate([redirectUrl]);
       },
       error: (err) => {

@@ -15,7 +15,7 @@
         <td>{{ request.type }}</td>
         <td>{{ request.date?.toString()?.substr(0, 10) }}</td>
         <td>{{ request.hour }}</td>
-        <td>{{ request.status }} <button (click)="cancel(request.id)" class="btn btn-primary float-right">Откажи</button></td>
+        <td>{{ request.status }} <button *ngIf="request.status !== 'CANCELLED'" (click)="cancel(request.id)" class="btn btn-primary float-right">Откажи</button></td>
       </tr>
       </tbody>
       <p *ngIf="!requests">Loading...</p>

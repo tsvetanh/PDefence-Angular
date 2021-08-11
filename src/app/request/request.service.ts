@@ -3,7 +3,6 @@ import {Request} from "../model/request";
 import {environment} from "../../environments/environment";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {User} from "../model/user";
 
 
 const apiURL = environment.api+"/request";
@@ -37,7 +36,10 @@ export class RequestService {
   }
 
    public cancelRequest(id: string): Observable<Request> {
-    console.log(id)
     return this.http.post<Request>(`${apiURL}/cancel`, id, {withCredentials: true});
+  }
+
+  processRequest(id: string) {
+    return this.http.post<Request>(`${apiURL}/process`, id, {withCredentials: true});
   }
 }

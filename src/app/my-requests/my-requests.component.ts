@@ -30,9 +30,15 @@ export class MyRequestsComponent implements OnInit {
   }
 
   ngOnInit() {
+    if (!this.userService.isLogged) {
+      this.router.navigate(['/']);
+      return;
+    }
+
     this.requestService.getRequestsByEmail(this.userService.user?.email).subscribe(data => {
       // @ts-ignore
       this.requests = data;
     });
+
   }
 }
