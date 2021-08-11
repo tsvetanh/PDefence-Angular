@@ -39,15 +39,31 @@ export class RequestListComponent implements OnInit {
       });
   }
 
+  activate(id: string) {
+    this.requestService.activate(id).subscribe(
+      (data) =>{
+        this.ngOnInit();
+      },
+      err => {
+        console.log(err);
+      });
+  }
+
   ngOnInit() {
     if (!this.userService.isLogged) {
       this.router.navigate(['/']);
       return;
     }
-    this.requestService.getAllRequests().subscribe(data => {
+    if (!this.userService.admin) {
+      this.router.navigate(['/']);
+      return;
+    }
+    this.requestService.getAllCurrentRequests().subscribe(data => {
       // @ts-ignore
       this.requests = data;
       console.log(this.requests)
     });
   }
+
+
 }

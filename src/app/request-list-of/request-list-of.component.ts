@@ -22,6 +22,14 @@ export class RequestListOfComponent implements OnInit {
   }
 
   ngOnInit() {
+    if (!this.userService.isLogged) {
+      this.router.navigate(['/']);
+      return;
+    }
+    if (!this.userService.admin) {
+      this.router.navigate(['/']);
+      return;
+    }
     this.route.queryParams.subscribe(params => {
       let email = params['email'];
       if (email || email === "") {

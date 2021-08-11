@@ -31,8 +31,12 @@ export class RequestService {
     return this.http.post<Request[]>(`${apiURL}/getByEmail`, email, {withCredentials: true});
   }
 
-  public getAllRequests(): Observable<Request[]> {
+  public getAllCurrentRequests(): Observable<Request[]> {
     return this.http.get<Request[]>(apiURL + "/all");
+  }
+
+  public getAllArchivedRequests(): Observable<Request[]> {
+    return this.http.get<Request[]>(apiURL + "/archived");
   }
 
    public cancelRequest(id: string): Observable<Request> {
@@ -41,5 +45,9 @@ export class RequestService {
 
   processRequest(id: string) {
     return this.http.post<Request>(`${apiURL}/process`, id, {withCredentials: true});
+  }
+
+  activate(id: string) {
+    return this.http.post<Request>(`${apiURL}/activate`, id, {withCredentials: true});
   }
 }

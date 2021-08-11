@@ -1,12 +1,8 @@
 <div class="card my-5">
   <div class="card-body">
-    <div>
-      <h1>Всички заявки</h1>
-      <label routerLink="/archive" class="">Архив</label>
-    </div>
     <table class="table table-bordered table-striped">
       <thead class="thead-dark">
-
+      <h1></h1>
       <tr>
         <th scope="col">Услуга</th>
         <th scope="col">Дата</th>
@@ -21,15 +17,7 @@
         <td>{{ request.date?.toString()?.substr(0, 10) }}</td>
         <td>{{ request.hour }}</td>
         <td><a routerLink="/userDetails" [queryParams]="{email: request.createdBy}">{{ request.createdBy }}</a></td>
-        <td> {{ request.status }}
-          <div *ngIf="request.status !== 'CANCELLED' && request.status !== 'DONE'" class="edit-request">
-            <button (click)="cancel(request.id)" class="btn btn-primary float-right">Откажи</button>
-            <button (click)="process(request.id)" class="btn btn-primary float-right">Обработена</button>
-          </div>
-          <button *ngIf="request.status !== 'ACTIVE'" (click)="activate(request.id)"
-                  class="btn btn-primary float-right">Редактирай
-          </button>
-        </td>
+        <td> {{ request.status }}</td>
       </tr>
       </tbody>
       <p *ngIf="!requests">Loading...</p>

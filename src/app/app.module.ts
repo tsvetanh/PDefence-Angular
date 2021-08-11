@@ -21,6 +21,7 @@ import { MyRequestsComponent } from './my-requests/my-requests.component';
 import {UserListComponent} from "./user-list/user-list.component";
 import { UserDetailsComponent } from './user-details/user-details.component';
 import { RequestListOfComponent } from './request-list-of/request-list-of.component';
+import { ArchiveComponent } from './archive/archive.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { RequestListOfComponent } from './request-list-of/request-list-of.compon
     MyRequestsComponent,
     UserListComponent,
     UserDetailsComponent,
-    RequestListOfComponent
+    RequestListOfComponent,
+    ArchiveComponent
   ],
   imports: [
     BrowserModule,

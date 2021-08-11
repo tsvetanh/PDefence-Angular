@@ -11,6 +11,7 @@ import {RequestListComponent} from "./request-list/request-list.component";
 import {MyRequestsComponent} from "./my-requests/my-requests.component";
 import { UserDetailsComponent } from './user-details/user-details.component';
 import {RequestListOfComponent} from "./request-list-of/request-list-of.component";
+import { ArchiveComponent } from './archive/archive.component';
 
 const routes: Routes = [
   {
@@ -49,6 +50,10 @@ const routes: Routes = [
   {
     path: "requestsOf",
     component: RequestListOfComponent
+  },
+  {
+    path: "archive",
+    component: ArchiveComponent
   },
   {
     path: 'allUsers',
