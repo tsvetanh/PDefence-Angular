@@ -11,11 +11,39 @@ import { Request } from "../model/request";
 })
 export class ArchiveComponent implements OnInit {
 
-  requests: Request[] | undefined;
+  //@ts-ignore
+  requests: Request[];
+  noMore: boolean = false;
 
   constructor(private userService: UserService,
               private router: Router,
               private requestService: RequestService) { }
+
+  nextPage(last: Request) {
+    this.requestService.archNextPage(last).subscribe(
+      (data) => {
+        if (data.length > 0) {
+          this.requests = data;
+          this.noMore = false;
+        } else {
+          this.noMore = true;
+        }
+      },
+      err => console.log(err));
+  }
+
+  prevPage(first: Request) {
+    this.requestService.archPrevPage(first).subscribe(
+      (data) => {
+        if (data.length > 0) {
+          this.requests = data;
+          this.noMore = false;
+        } else {
+          this.noMore = true;
+        }
+      },
+      err => console.log(err));
+  }
 
   ngOnInit() {
     if (!this.userService.isLogged) {

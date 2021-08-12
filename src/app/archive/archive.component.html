@@ -22,5 +22,8 @@
       </tbody>
       <p *ngIf="!requests">Loading...</p>
     </table>
+    <button (click)="prevPage(requests[0])">Previous</button>
+    <button (click)="nextPage(requests[requests.length - 1])">Next</button>
+    <p *ngIf="noMore">Няма повече страници</p>
   </div>
 </div>

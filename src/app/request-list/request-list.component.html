@@ -1,7 +1,7 @@
 <div class="card my-5">
   <div class="card-body">
     <div>
-      <h1>Всички заявки</h1>
+      <h1>Заявки</h1>
       <label routerLink="/archive" class="">Архив</label>
     </div>
     <table class="table table-bordered table-striped">
@@ -22,8 +22,8 @@
         <td>{{ request.hour }}</td>
         <td><a routerLink="/userDetails" [queryParams]="{email: request.createdBy}">{{ request.createdBy }}</a></td>
         <td> {{ request.status }}
-          <div *ngIf="request.status !== 'CANCELLED' && request.status !== 'DONE'" class="edit-request">
-            <button (click)="cancel(request.id)" class="btn btn-primary float-right">Откажи</button>
+          <div *ngIf="request.status === 'ACTIVE'" class="edit-request">
+            <button (click)="cancel(request.id)" class="btn btn-primary float-right">Отмени</button>
             <button (click)="process(request.id)" class="btn btn-primary float-right">Обработена</button>
           </div>
           <button *ngIf="request.status !== 'ACTIVE'" (click)="activate(request.id)"
@@ -34,5 +34,8 @@
       </tbody>
       <p *ngIf="!requests">Loading...</p>
     </table>
+    <button (click)="prevPage(requests[0])">Previous</button>
+    <button (click)="nextPage(requests[requests.length - 1])">Next</button>
+    <p *ngIf="noMore">Няма повече страници</p>
   </div>
 </div>

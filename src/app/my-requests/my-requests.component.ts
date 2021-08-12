@@ -28,7 +28,6 @@ export class MyRequestsComponent implements OnInit {
       });
     // this.router.navigate(['/myRequests'])
   }
-
   ngOnInit() {
     if (!this.userService.isLogged) {
       this.router.navigate(['/']);

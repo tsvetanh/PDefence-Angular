@@ -5,7 +5,7 @@ import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 
 
-const apiURL = environment.api+"/request";
+const apiURL = environment.api + "/request";
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +15,7 @@ export class RequestService {
   constructor(private http: HttpClient) {
   }
 
-  public save(data: { type: string, date: Date, hour: number}, email: string) {
+  public save(data: { type: string, date: Date, hour: number }, email: string) {
     return this.http.post<Request>(`${apiURL}/save`, {data, email}, {withCredentials: true});
   }
 
@@ -35,11 +35,29 @@ export class RequestService {
     return this.http.get<Request[]>(apiURL + "/all");
   }
 
+  nextPage(last: Request): Observable<Request[]> {
+    return this.http.post<Request[]>(`${apiURL}/nextPage`, last, {withCredentials: true});
+  }
+
+  prevPage(first: Request): Observable<Request[]> {
+    return this.http.post<Request[]>(`${apiURL}/prevPage`, first, {withCredentials: true});
+
+  }
+
+  archNextPage(last: Request): Observable<Request[]> {
+    return this.http.post<Request[]>(`${apiURL}/archNextPage`, last, {withCredentials: true});
+  }
+
+  archPrevPage(first: Request): Observable<Request[]> {
+    return this.http.post<Request[]>(`${apiURL}/archPrevPage`, first, {withCredentials: true});
+
+  }
+
   public getAllArchivedRequests(): Observable<Request[]> {
     return this.http.get<Request[]>(apiURL + "/archived");
   }
 
-   public cancelRequest(id: string): Observable<Request> {
+  public cancelRequest(id: string): Observable<Request> {
     return this.http.post<Request>(`${apiURL}/cancel`, id, {withCredentials: true});
   }
 
@@ -50,4 +68,6 @@ export class RequestService {
   activate(id: string) {
     return this.http.post<Request>(`${apiURL}/activate`, id, {withCredentials: true});
   }
+
+
 }

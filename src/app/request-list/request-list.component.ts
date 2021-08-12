@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {User} from "../model/user";
 import {UserService} from "../user/user.service";
 import {RequestService} from "../request/request.service";
-import { Request } from "../model/request"
+import {Request} from "../model/request"
 import {Router} from "@angular/router";
 
 @Component({
@@ -12,7 +12,9 @@ import {Router} from "@angular/router";
 })
 export class RequestListComponent implements OnInit {
 
-  requests: Request[] | undefined;
+  // @ts-ignore
+  requests: Request[];
+  noMore: boolean = false;
 
   constructor(private requestService: RequestService,
               private userService: UserService,
@@ -21,7 +23,7 @@ export class RequestListComponent implements OnInit {
 
   cancel(id: string): void {
     this.requestService.cancelRequest(id).subscribe(
-      (data) =>{
+      (data) => {
         this.ngOnInit();
       },
       err => {
@@ -31,7 +33,7 @@ export class RequestListComponent implements OnInit {
 
   process(id: string) {
     this.requestService.processRequest(id).subscribe(
-      (data) =>{
+      (data) => {
         this.ngOnInit();
       },
       err => {
@@ -41,12 +43,38 @@ export class RequestListComponent implements OnInit {
 
   activate(id: string) {
     this.requestService.activate(id).subscribe(
-      (data) =>{
+      (data) => {
         this.ngOnInit();
       },
       err => {
         console.log(err);
       });
+  }
+
+  nextPage(last: Request) {
+    this.requestService.nextPage(last).subscribe(
+      (data) => {
+        if (data.length > 0) {
+          this.requests = data;
+          this.noMore = false;
+        } else {
+          this.noMore = true;
+        }
+      },
+      err => console.log(err));
+  }
+
+  prevPage(first: Request) {
+    this.requestService.prevPage(first).subscribe(
+      (data) => {
+        if (data.length > 0) {
+          this.requests = data;
+          this.noMore = false;
+        } else {
+          this.noMore = true;
+        }
+      },
+      err => console.log(err));
   }
 
   ngOnInit() {
@@ -61,7 +89,6 @@ export class RequestListComponent implements OnInit {
     this.requestService.getAllCurrentRequests().subscribe(data => {
       // @ts-ignore
       this.requests = data;
-      console.log(this.requests)
     });
   }
 
