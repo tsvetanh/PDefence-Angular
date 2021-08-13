@@ -1,9 +1,23 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {User} from "../model/user";
 import {UserService} from "../user/user.service";
 import {RequestService} from "../request/request.service";
 import {Request} from "../model/request"
 import {Router} from "@angular/router";
+import {ChartComponent} from "ng-apexcharts";
+
+import {
+  ApexNonAxisChartSeries,
+  ApexResponsive,
+  ApexChart
+} from "ng-apexcharts";
+
+export type ChartOptions = {
+  series: ApexNonAxisChartSeries | any;
+  chart: ApexChart | any;
+  responsive: ApexResponsive[] | any;
+  labels: any;
+};
 
 @Component({
   selector: 'app-request-list',
@@ -15,6 +29,13 @@ export class RequestListComponent implements OnInit {
   // @ts-ignore
   requests: Request[];
   noMore: boolean = false;
+  page: number = 1;
+  // @ts-ignore
+  data: number[] = [];
+  //@ts-ignore
+  @ViewChild("chart") chart: ChartComponent;
+  // @ts-ignore
+  public chartOptions: Partial<ChartOptions>;
 
   constructor(private requestService: RequestService,
               private userService: UserService,
@@ -57,6 +78,7 @@ export class RequestListComponent implements OnInit {
         if (data.length > 0) {
           this.requests = data;
           this.noMore = false;
+          this.page++;
         } else {
           this.noMore = true;
         }
@@ -70,6 +92,7 @@ export class RequestListComponent implements OnInit {
         if (data.length > 0) {
           this.requests = data;
           this.noMore = false;
+          this.page--;
         } else {
           this.noMore = true;
         }
@@ -86,10 +109,37 @@ export class RequestListComponent implements OnInit {
       this.router.navigate(['/']);
       return;
     }
+    this.page = 1;
     this.requestService.getAllCurrentRequests().subscribe(data => {
       // @ts-ignore
       this.requests = data;
     });
+    this.requestService.getStatusCounts().subscribe(data => {
+      this.data = data;
+      console.log(this.data)
+      this.chartOptions = {
+        series: this.data,
+        chart: {
+          width: 380,
+          type: "donut",
+        },
+        labels: ["Active", "Done", "Cancelled"],
+        responsive: [
+          {
+            breakpoint: 480,
+            options: {
+              chart: {
+                width: 200
+              },
+              legend: {
+                position: "bottom"
+              }
+            }
+          }
+        ]
+      };
+    })
+
   }
 
 

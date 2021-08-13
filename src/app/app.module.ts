@@ -22,6 +22,7 @@ import {UserListComponent} from "./user-list/user-list.component";
 import { UserDetailsComponent } from './user-details/user-details.component';
 import { RequestListOfComponent } from './request-list-of/request-list-of.component';
 import { ArchiveComponent } from './archive/archive.component';
+import { NgApexchartsModule } from 'ng-apexcharts';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,7 @@ import { ArchiveComponent } from './archive/archive.component';
     UserListComponent,
     UserDetailsComponent,
     RequestListOfComponent,
-    ArchiveComponent
+    ArchiveComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,7 +49,8 @@ import { ArchiveComponent } from './archive/archive.component';
     CoreModule,
     UserModule,
     HomeModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NgApexchartsModule,
   ],
   providers: [],
   exports: [

@@ -8,6 +8,7 @@
         <th scope="col">Дата</th>
         <th scope="col">Час</th>
         <th scope="col">Потребител</th>
+        <th scope="col">Статус</th>
       </tr>
       </thead>
       <tbody *ngIf="requests">
@@ -16,6 +17,15 @@
         <td>{{ request.date?.toString()?.substr(0, 10) }}</td>
         <td>{{ request.hour }}</td>
         <td><a routerLink="/userDetails" [queryParams]="{email: request.createdBy}">{{ request.createdBy }}</a></td>
+        <td> {{ request.status }}
+          <div *ngIf="request.status === 'ACTIVE'" class="edit-request">
+            <button (click)="cancel(request.id)" class="btn btn-primary float-right">Отмени</button>
+            <button (click)="process(request.id)" class="btn btn-primary float-right">Обработена</button>
+          </div>
+          <button *ngIf="request.status !== 'ACTIVE'" (click)="activate(request.id)"
+                  class="btn btn-primary float-right">Редактирай
+          </button>
+        </td>
       </tr>
       </tbody>
       <p *ngIf="!requests">Loading...</p>

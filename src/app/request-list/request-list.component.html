@@ -35,7 +35,16 @@
       <p *ngIf="!requests">Loading...</p>
     </table>
     <button (click)="prevPage(requests[0])">Previous</button>
+    <a class="page">{{page}}</a>
     <button (click)="nextPage(requests[requests.length - 1])">Next</button>
     <p *ngIf="noMore">Няма повече страници</p>
+  </div>
+  <div id="chart">
+    <apx-chart
+      [series]="chartOptions.series"
+      [chart]="chartOptions.chart"
+      [labels]="chartOptions.labels"
+      [responsive]="chartOptions.responsive"
+    ></apx-chart>
   </div>
 </div>

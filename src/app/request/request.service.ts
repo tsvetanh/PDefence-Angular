@@ -15,7 +15,7 @@ export class RequestService {
   constructor(private http: HttpClient) {
   }
 
-  public save(data: { type: string, date: Date, hour: number }, email: string) {
+  public save(data: { type: string, date: Date, hour: number, description: string}, email: string) {
     return this.http.post<Request>(`${apiURL}/save`, {data, email}, {withCredentials: true});
   }
 
@@ -70,4 +70,7 @@ export class RequestService {
   }
 
 
+  getStatusCounts() {
+    return this.http.get<number[]>(`${apiURL}/statusCount`, {withCredentials: true});
+  }
 }

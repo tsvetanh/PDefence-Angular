@@ -1,0 +1,8 @@
+.edit-request {
+  display:  inline-block;
+  float: right;
+}
+
+.edit-request :last-child {
+  margin-right: 50px;
+}

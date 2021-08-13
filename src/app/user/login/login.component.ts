@@ -10,7 +10,7 @@ import {Subject} from "rxjs";
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnDestroy{
+export class LoginComponent implements OnDestroy {
   killSubscription = new Subject();
   form: FormGroup;
 
@@ -27,11 +27,18 @@ export class LoginComponent implements OnDestroy{
   }
 
   login(): void {
-    if (this.form.invalid) { return; }
-    const { email, password } = this.form.value;
-    this.userService.login({ email, password }).subscribe({
+    if (this.form.invalid) {
+      return;
+    }
+    const {email, password} = this.form.value;
+    this.userService.login({email, password}).subscribe({
       next: () => {
-        const redirectUrl = this.activatedRoute.snapshot.queryParams.redirectUrl || '/service';
+        let redirectUrl;
+        if (this.userService.admin) {
+          redirectUrl = this.activatedRoute.snapshot.queryParams.redirectUrl || '/allRequests';
+        } else {
+          redirectUrl = this.activatedRoute.snapshot.queryParams.redirectUrl || '/service';
+        }
         this.router.navigate([redirectUrl]);
       },
       error: (err) => {

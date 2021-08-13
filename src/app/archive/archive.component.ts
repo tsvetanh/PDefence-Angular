@@ -14,6 +14,7 @@ export class ArchiveComponent implements OnInit {
   //@ts-ignore
   requests: Request[];
   noMore: boolean = false;
+  page: number = 1;
 
   constructor(private userService: UserService,
               private router: Router,
@@ -25,6 +26,7 @@ export class ArchiveComponent implements OnInit {
         if (data.length > 0) {
           this.requests = data;
           this.noMore = false;
+          this.page++;
         } else {
           this.noMore = true;
         }
@@ -38,6 +40,7 @@ export class ArchiveComponent implements OnInit {
         if (data.length > 0) {
           this.requests = data;
           this.noMore = false;
+          this.page--;
         } else {
           this.noMore = true;
         }

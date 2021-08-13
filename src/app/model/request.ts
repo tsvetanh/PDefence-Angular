@@ -6,6 +6,7 @@ export class Request {
   createdBy: string | undefined;
   hour: number | undefined;
   status: string | undefined;
+  description: string | undefined;
 
   constructor() {
 

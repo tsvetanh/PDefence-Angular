@@ -4,6 +4,7 @@ import {RegisterComponent} from './register/register.component';
 import {LoginComponent} from './login/login.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {UserService} from "./user.service";
+import {HomeModule} from "../home/home.module";
 
 
 @NgModule({
@@ -13,7 +14,7 @@ import {UserService} from "./user.service";
   ],
   exports: [
     LoginComponent,
-    RegisterComponent,
+    RegisterComponent
 
   ],
   imports: [

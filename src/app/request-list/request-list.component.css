@@ -10,3 +10,15 @@
 label {
   cursor: pointer;
 }
+
+.page {
+  margin: 5px;
+  padding: 3px;
+  border: 2px solid;
+}
+
+#chart {
+  max-width: 380px;
+  margin: 35px auto;
+  padding: 0;
+}

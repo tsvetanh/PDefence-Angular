@@ -21,6 +21,37 @@ export class RequestListOfComponent implements OnInit {
               private router: Router) {
   }
 
+
+  cancel(id: string): void {
+    this.requestService.cancelRequest(id).subscribe(
+      (data) => {
+        this.ngOnInit();
+      },
+      err => {
+        console.log(err);
+      });
+  }
+
+  process(id: string) {
+    this.requestService.processRequest(id).subscribe(
+      (data) => {
+        this.ngOnInit();
+      },
+      err => {
+        console.log(err);
+      });
+  }
+
+  activate(id: string) {
+    this.requestService.activate(id).subscribe(
+      (data) => {
+        this.ngOnInit();
+      },
+      err => {
+        console.log(err);
+      });
+  }
+
   ngOnInit() {
     if (!this.userService.isLogged) {
       this.router.navigate(['/']);

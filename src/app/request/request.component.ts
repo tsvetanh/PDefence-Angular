@@ -21,24 +21,24 @@ export class RequestComponent implements OnInit, OnDestroy {
     private activatedRoute: ActivatedRoute,
     private fb: FormBuilder,
     private requestService: RequestService,
-    private userService: UserService,
+    public userService: UserService,
     private router: Router
   ) {
     this.form = this.fb.group({
       type: [''],
       date: [''],
       description: [''],
-      hour: ['']
+      hour: [''],
     });
   }
 
   save(): void {
     if (this.form.invalid) { return; }
-    const { type, date, hour } = this.form.value;
+    const { type, date, hour, description} = this.form.value;
     let user = localStorage.getItem('USER');
     // @ts-ignore
     let email = JSON.parse(user).email
-    this.requestService.save({ type, date, hour}, email)
+    this.requestService.save({ type, date, hour, description}, email)
       .subscribe({
       next: () => {
         const redirectUrl = this.activatedRoute.snapshot.queryParams.redirectUrl || '/myRequests';
