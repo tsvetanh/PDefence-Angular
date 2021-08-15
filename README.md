@@ -1,27 +1,32 @@
-# Angularclient
+Цел на проекта: Създаване на система за управление на отношенията с клиенти на център за гуми. 
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.1.4.
+Нужди: 
+1. Създаване на постоянни клиенти на центъра посредством регистрация и по-добро управление на поръчките
+2. Поддържане на архив с обработените поръчки за по-лесна отчетност на приходите на фирмата
+3. Въвеждане на KPI за повишаване на ефективността на работата
 
-## Development server
+Основни функционалности
+Потребител
+1. Всеки клиент може да пусне нова поръчка само ако е регистриран потребител
+2. Потребителят може да преглежда старите си поръчки
+3. Потребителят може да отменя необработени от администратора поръчки
+4. Потребителят може да редактира информацията си за контакт (без електронната поща, която служи за потребителско име)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
+Поръчка
+1. Само регистрирани потребители могат да пускат поръчка
+2. Поръчка се пуска с избор от наличните опции за услуги, избор на дата и час
+3. След регистрация на поръчката тя придобива статус Active
+4. Статусът на поръчката може да се промени от Потребителя пуснал поръчката на Cancelled.
+5. Статусът може да се промени от Администратора както следва:
+- Done - когато клиентът бъде обслужен в центъра за гуми
+- Cancelled - Когато потребителят отмени по телефона или на място поръчката (в случай, че потребителят не може да отмени поръчката през профила си)
+6. Само потребител с права на Администратор може да редактира вече приключена поръчка (статус Done and Cancel)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Администратор
+1. Администраторът може да работи с Поръчките както следва:
+- да обработва вече подадени поръчки от други потребители (статуси от Active към Done и Cancelled)
+- Да редактира вече приключена поръчка (от статуси DOne и Cancelled към Active)
+- Да има достъп до приклйчените поръчки
+2. Администраторът може да работи с Потребителите както следва:
+- да редактира данни за потребител (без промяна на email)
