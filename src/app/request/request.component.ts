@@ -27,27 +27,34 @@ export class RequestComponent implements OnInit, OnDestroy {
     this.form = this.fb.group({
       type: [''],
       date: [''],
-      description: [''],
       hour: [''],
+      description: [''],
     });
   }
 
   save(): void {
-    if (this.form.invalid) { return; }
-    const { type, date, hour, description} = this.form.value;
+    if (this.form.invalid) {
+      return;
+    }
+    const {type, date, hour, description} = this.form.value;
     let user = localStorage.getItem('USER');
     // @ts-ignore
     let email = JSON.parse(user).email
-    this.requestService.save({ type, date, hour, description}, email)
+    this.requestService.save({type, date, hour, description}, email)
       .subscribe({
-      next: () => {
-        const redirectUrl = this.activatedRoute.snapshot.queryParams.redirectUrl || '/myRequests';
-        this.router.navigate([redirectUrl]);
-      },
-      error: (err) => {
-        console.log(err);
-      }
-    });
+        next: () => {
+          let redirectUrl;
+          if (this.userService.admin) {
+            redirectUrl = this.activatedRoute.snapshot.queryParams.redirectUrl || '/allRequests';
+          } else {
+            redirectUrl = this.activatedRoute.snapshot.queryParams.redirectUrl || '/myRequests';
+          }
+          this.router.navigate([redirectUrl]);
+        },
+        error: (err) => {
+          console.log(err);
+        }
+      });
   }
 
   getByDate(date: HTMLInputElement): void {
@@ -57,7 +64,7 @@ export class RequestComponent implements OnInit, OnDestroy {
         for (const request of data) {
           let index = this.freeHours.indexOf(<number>request.hour);
           // if (index > -1) {
-          this.freeHours.splice(index,1);
+          this.freeHours.splice(index, 1);
           // }
         }
       });

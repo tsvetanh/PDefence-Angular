@@ -101,11 +101,7 @@ export class RequestListComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (!this.userService.isLogged) {
-      this.router.navigate(['/']);
-      return;
-    }
-    if (!this.userService.admin) {
+    if (!this.userService.isLogged || !this.userService.admin) {
       this.router.navigate(['/']);
       return;
     }

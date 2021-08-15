@@ -40,7 +40,7 @@
               </div>
               <div *ngIf="userService.admin" class="flex form-group tm-form-element tm-form-element-2 date">
                 <label for="date">Описание</label>
-                <textArea formControlName="description" class="form-control"  id="description" name="description" ></textarea>
+                <textarea #description formControlName="description" class="form-control"  id="description" name="description"  ></textarea>
               </div>
             </div>
               <div class="form-group tm-form-element tm-form-element-2">

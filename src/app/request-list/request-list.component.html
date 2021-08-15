@@ -12,6 +12,7 @@
         <th scope="col">Дата</th>
         <th scope="col">Час</th>
         <th scope="col">Потребител</th>
+        <th scope="col">Бележки</th>
         <th scope="col">Статус</th>
       </tr>
       </thead>
@@ -21,6 +22,7 @@
         <td>{{ request.date?.toString()?.substr(0, 10) }}</td>
         <td>{{ request.hour }}</td>
         <td><a routerLink="/userDetails" [queryParams]="{email: request.createdBy}">{{ request.createdBy }}</a></td>
+        <td>{{ request.description }}</td>
         <td> {{ request.status }}
           <div *ngIf="request.status === 'ACTIVE'" class="edit-request">
             <button (click)="cancel(request.id)" class="btn btn-primary float-right">Отмени</button>
@@ -41,10 +43,10 @@
   </div>
   <div id="chart">
     <apx-chart
-      [series]="chartOptions.series"
-      [chart]="chartOptions.chart"
-      [labels]="chartOptions.labels"
-      [responsive]="chartOptions.responsive"
+      [series]="chartOptions?.series"
+      [chart]="chartOptions?.chart"
+      [labels]="chartOptions?.labels"
+      [responsive]="chartOptions?.responsive"
     ></apx-chart>
   </div>
 </div>
